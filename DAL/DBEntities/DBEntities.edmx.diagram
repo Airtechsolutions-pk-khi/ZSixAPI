@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9428c39e54c74c75859c67e502070d1f" Name="Diagram1">
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Addon" Width="1.5" PointX="9.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.ApplicationInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.AppSetting" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Banner" Width="1.5" PointX="3" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Brand" Width="1.5" PointX="0.75" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Category" Width="1.5" PointX="5.25" PointY="43.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Customer" Width="1.5" PointX="8.25" PointY="43" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerAddress" Width="1.5" PointX="10.5" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerDetail" Width="1.5" PointX="10.5" PointY="43.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerOrderDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerOrder" Width="1.5" PointX="10.5" PointY="52.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerPayment" Width="1.5" PointX="10.5" PointY="47.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Delivery" Width="1.5" PointX="0.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.DeliveryAreaBrandJunc" Width="1.5" PointX="3" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Item" Width="1.5" PointX="7.5" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Location" Width="1.5" PointX="3" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Modifier" Width="1.5" PointX="12.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Offer" Width="1.5" PointX="9.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderCheckout" Width="1.5" PointX="10.5" PointY="57" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderDetail" Width="1.5" PointX="13.5" PointY="44.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderDetailAddon" Width="1.5" PointX="15.75" PointY="40.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderDetailModifier" Width="1.5" PointX="18.75" PointY="40.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Order" Width="1.5" PointX="8.25" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.PushToken" Width="1.5" PointX="5.25" PointY="53.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Status" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.SubUser" Width="1.5" PointX="5.25" PointY="37.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.TodaySpecialItem" Width="1.5" PointX="9.75" PointY="62.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.TransferOrder" Width="1.5" PointX="13.5" PointY="53.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Unit" Width="1.5" PointX="5.25" PointY="33.875" IsExpanded="true" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_OrderDetailAddon_Addons" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Banners_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Category_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Customer_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_DeliveryAreaBrandJunc_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Locations_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Modifiers_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Offers_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_SubUser_Brand" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Category_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Items_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Customer_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_CustomerAddresses_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_CustomerDetail_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_CustomerPayment_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_CustomerOrders_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_DeliveryAreaBrandJunc_DeliveryAreaBrandJunc" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Items_Unit" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Offers_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_OrderDetail_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_TodaySpecialItems_Items" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Orders_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_SubUser_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations1" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_OrderDetailModifier_Modifiers" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_OrderCheckout_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_OrderDetail_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_OrderDetailAddon_OrderDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_OrderDetailModifier_OrderDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Orders_SubUser" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Orders_SubUser1" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.ItemAddonsJunc" ManuallyRouted="false" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.ItemModifiersJunc" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

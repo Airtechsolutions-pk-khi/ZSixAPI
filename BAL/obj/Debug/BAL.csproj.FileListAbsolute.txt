@@ -1,0 +1,205 @@
+D:\Rafi Data\Airtech\Cafeela\API\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
+D:\Rafi Data\Airtech\Cafeela\API\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\BAL.dll.config
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\BAL.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\BAL.pdb
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\DAL.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\EntityFramework.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\Newtonsoft.Json.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Security.AccessControl.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Security.Permissions.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Security.Principal.Windows.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.Helpers.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.Mvc.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.Razor.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.WebPages.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\WebApiContrib.Formatting.JavaScriptSerializer.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\DAL.pdb
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\DAL.dll.config
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\EntityFramework.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\Newtonsoft.Json.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Security.AccessControl.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Security.Permissions.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Security.Principal.Windows.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.Helpers.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.Mvc.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.Razor.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.WebPages.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Rafi Data\Airtech\Cafeela\API\BAL\obj\Debug\BAL.csproj.CopyComplete
+D:\Rafi Data\Airtech\Cafeela\API\BAL\obj\Debug\BAL.dll
+D:\Rafi Data\Airtech\Cafeela\API\BAL\obj\Debug\BAL.pdb
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\obj\Debug\BAL.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\obj\Debug\BAL.pdb
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\BAL.dll.config
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\BAL.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\BAL.pdb
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\DAL.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\EntityFramework.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\Newtonsoft.Json.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Security.AccessControl.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Security.Permissions.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Security.Principal.Windows.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.Helpers.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.Mvc.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.Razor.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.WebPages.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\WebApiContrib.Formatting.JavaScriptSerializer.dll
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\DAL.pdb
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\DAL.dll.config
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\EntityFramework.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\Newtonsoft.Json.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Security.AccessControl.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Security.Permissions.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Security.Principal.Windows.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.Helpers.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.Mvc.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.Razor.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.WebPages.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Rafi Data\Airtech\Cafeela\CafeelaAPI\BAL\obj\Debug\BAL.csproj.CopyComplete
+D:\Project\Cafeela-API\BAL\bin\Debug\BAL.dll.config
+D:\Project\Cafeela-API\BAL\bin\Debug\BAL.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\BAL.pdb
+D:\Project\Cafeela-API\BAL\bin\Debug\DAL.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\EntityFramework.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\Newtonsoft.Json.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Security.AccessControl.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Security.Permissions.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Security.Principal.Windows.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.Helpers.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.Mvc.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.Razor.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.WebPages.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\WebApiContrib.Formatting.JavaScriptSerializer.dll
+D:\Project\Cafeela-API\BAL\bin\Debug\DAL.pdb
+D:\Project\Cafeela-API\BAL\bin\Debug\DAL.dll.config
+D:\Project\Cafeela-API\BAL\bin\Debug\EntityFramework.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\Newtonsoft.Json.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Security.AccessControl.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Security.Permissions.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Security.Principal.Windows.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.Helpers.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.Mvc.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.Razor.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.WebPages.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Project\Cafeela-API\BAL\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Project\Cafeela-API\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
+D:\Project\Cafeela-API\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+D:\Project\Cafeela-API\BAL\obj\Debug\BAL.csproj.CopyComplete
+D:\Project\Cafeela-API\BAL\obj\Debug\BAL.dll
+D:\Project\Cafeela-API\BAL\obj\Debug\BAL.pdb
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\BAL.dll.config
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\BAL.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\BAL.pdb
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\DAL.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\EntityFramework.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\Newtonsoft.Json.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.AccessControl.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.Permissions.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.Principal.Windows.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Helpers.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Mvc.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Razor.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\WebApiContrib.Formatting.JavaScriptSerializer.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\DAL.pdb
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\DAL.dll.config
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\EntityFramework.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\Newtonsoft.Json.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.AccessControl.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.Permissions.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.Principal.Windows.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Helpers.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Mvc.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Razor.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.csprojAssemblyReference.cache
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.csproj.CopyComplete
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.dll
+D:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.pdb
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\BAL.dll.config
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\BAL.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\BAL.pdb
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\DAL.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\EntityFramework.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\EntityFramework.SqlServer.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\Newtonsoft.Json.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Configuration.ConfigurationManager.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Net.Http.Formatting.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.AccessControl.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.Permissions.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.Principal.Windows.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Helpers.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Mvc.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Razor.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.Razor.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\WebApiContrib.Formatting.JavaScriptSerializer.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\DAL.pdb
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\DAL.dll.config
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\EntityFramework.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\EntityFramework.SqlServer.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\Newtonsoft.Json.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Configuration.ConfigurationManager.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Net.Http.Formatting.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.AccessControl.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.Permissions.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Security.Principal.Windows.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Helpers.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Mvc.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.Razor.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\bin\Debug\System.Web.WebPages.Razor.xml
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.csproj.AssemblyReference.cache
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.csproj.CoreCompileInputs.cache
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.csproj.CopyComplete
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.dll
+E:\Project\ZSixRestaurant\ZSixRestaurantAPI\BAL\obj\Debug\BAL.pdb
