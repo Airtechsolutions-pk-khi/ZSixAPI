@@ -39,6 +39,9 @@ namespace DAL.DBEntities
         public Nullable<System.DateTime> OrderPreparedDate { get; set; }
         public Nullable<System.DateTime> OrderOFDDate { get; set; }
         public Nullable<System.DateTime> OrderDoneDate { get; set; }
+        public Nullable<System.DateTime> AdvanceOrderPunchDate { get; set; }
+        public Nullable<System.DateTime> AdvanceOrderDate { get; set; }
+        public Nullable<bool> IsAdvanceOrder { get; set; }
         public string Remarks { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

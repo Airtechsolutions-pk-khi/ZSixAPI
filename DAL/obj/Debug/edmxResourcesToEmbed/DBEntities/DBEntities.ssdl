@@ -270,6 +270,8 @@
     <Property Name="Tax" Type="float" />
     <Property Name="IsPickupAllowed" Type="int" />
     <Property Name="IsDeliveryAllowed" Type="int" />
+    <Property Name="IsDineInAllowed" Type="int" />
+    <Property Name="IsAdvanceOrder" Type="int" />
   </EntityType>
   <EntityType Name="Modifiers">
     <Key>
@@ -384,6 +386,9 @@
     <Property Name="OrderPreparedDate" Type="datetime" />
     <Property Name="OrderOFDDate" Type="datetime" />
     <Property Name="OrderDoneDate" Type="datetime" />
+    <Property Name="AdvanceOrderPunchDate" Type="datetime" />
+    <Property Name="AdvanceOrderDate" Type="datetime" />
+    <Property Name="IsAdvanceOrder" Type="bit" />
     <Property Name="Remarks" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="PushToken">
@@ -1429,10 +1434,12 @@
     <Parameter Name="Opentime" Type="nvarchar" Mode="In" />
     <Parameter Name="Closetime" Type="nvarchar" Mode="In" />
     <Parameter Name="LocationID" Type="int" Mode="In" />
-    <Parameter Name="Currency" Type="nvarchar" Mode="In" />
     <Parameter Name="Passcode" Type="nvarchar" Mode="In" />
+    <Parameter Name="Currency" Type="nvarchar" Mode="In" />
     <Parameter Name="Discounts" Type="float" Mode="In" />
     <Parameter Name="Tax" Type="float" Mode="In" />
+    <Parameter Name="IsPickupAllowed" Type="int" Mode="In" />
+    <Parameter Name="IsDeliveryAllowed" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_updateModifier_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Name" Type="nvarchar" Mode="In" />

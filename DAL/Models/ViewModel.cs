@@ -379,6 +379,9 @@ namespace DAL.Models
         public Nullable<System.DateTime> OrderPreparedDate { get; set; }
         public Nullable<System.DateTime> OrderOFDDate { get; set; }
         public Nullable<System.DateTime> OrderDoneDate { get; set; }
+        public Nullable<System.DateTime> AdvanceOrderPunchDate { get; set; }
+        public Nullable<System.DateTime> AdvanceOrderDate { get; set; }
+        public bool? IsAdvanceOrder { get; set; }
         public Nullable<int> StatusID { get; set; }
         public string SessionID { get; set; }
         public Nullable<int> OrderTakerID { get; set; }

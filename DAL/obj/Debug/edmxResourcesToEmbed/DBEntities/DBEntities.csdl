@@ -77,10 +77,10 @@
     <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Brand" FromRole="Brand" ToRole="Category" />
     <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Brand" FromRole="Brand" ToRole="Customer" />
     <NavigationProperty Name="DeliveryAreaBrandJuncs" Relationship="Self.FK_DeliveryAreaBrandJunc_Brand" FromRole="Brand" ToRole="DeliveryAreaBrandJunc" />
-    <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Brand" FromRole="Brand" ToRole="Locations" />
     <NavigationProperty Name="Modifiers" Relationship="Self.FK_Modifiers_Brand" FromRole="Brand" ToRole="Modifiers" />
     <NavigationProperty Name="Offers" Relationship="Self.FK_Offers_Brand" FromRole="Brand" ToRole="Offers" />
     <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUser_Brand" FromRole="Brand" ToRole="SubUser" />
+    <NavigationProperty Name="Locations" Relationship="db_a82b87_zsixrestaurantModel.FK_Locations_Brand" FromRole="Brand" ToRole="Location" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -98,8 +98,8 @@
     <Property Name="LocationID" Type="Int32" />
     <Property Name="BrandID" Type="Int32" />
     <NavigationProperty Name="Brand" Relationship="Self.FK_Category_Brand" FromRole="Category" ToRole="Brand" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Category_Locations" FromRole="Category" ToRole="Locations" />
     <NavigationProperty Name="Items" Relationship="Self.FK_Items_Items" FromRole="Category" ToRole="Items" />
+    <NavigationProperty Name="Location" Relationship="db_a82b87_zsixrestaurantModel.FK_Category_Locations" FromRole="Category" ToRole="Location" />
   </EntityType>
   <EntityType Name="Customer">
     <Key>
@@ -117,10 +117,10 @@
     <Property Name="BrandID" Type="Int32" />
     <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Brand" Relationship="Self.FK_Customer_Brand" FromRole="Customer" ToRole="Brand" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Customer_Locations" FromRole="Customer" ToRole="Locations" />
     <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK_CustomerAddresses_Customer" FromRole="Customer" ToRole="CustomerAddresses" />
     <NavigationProperty Name="CustomerDetails" Relationship="Self.FK_CustomerDetail_Customer" FromRole="Customer" ToRole="CustomerDetail" />
     <NavigationProperty Name="CustomerPayments" Relationship="Self.FK_CustomerPayment_Customer" FromRole="Customer" ToRole="CustomerPayment" />
+    <NavigationProperty Name="Location" Relationship="db_a82b87_zsixrestaurantModel.FK_Customer_Locations" FromRole="Customer" ToRole="Location" />
   </EntityType>
   <EntityType Name="CustomerAddress">
     <Key>
@@ -189,7 +189,7 @@
     <Property Name="OrderID" Type="Int32" />
     <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="AddressNickName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_CustomerOrders_Orders" FromRole="CustomerOrders" ToRole="Orders" />
+    <NavigationProperty Name="Order" Relationship="db_a82b87_zsixrestaurantModel.FK_CustomerOrders_Orders" FromRole="CustomerOrder" ToRole="Order" />
   </EntityType>
   <EntityType Name="CustomerPayment">
     <Key>
@@ -257,45 +257,6 @@
     <NavigationProperty Name="Addons" Relationship="Self.ItemAddonsJunc" FromRole="Items" ToRole="Addons" />
     <NavigationProperty Name="Modifiers" Relationship="Self.ItemModifiersJunc" FromRole="Items" ToRole="Modifiers" />
   </EntityType>
-  <EntityType Name="Location">
-    <Key>
-      <PropertyRef Name="LocationID" />
-    </Key>
-    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="LicenseID" Type="Int32" Nullable="false" />
-    <Property Name="DeliveryServices" Type="Boolean" />
-    <Property Name="DeliveryCharges" Type="Double" />
-    <Property Name="DeliveryTime" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="MinOrderAmount" Type="Double" />
-    <Property Name="Longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="BrandID" Type="Int32" />
-    <Property Name="Opentime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Closetime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Passcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Discounts" Type="Double" />
-    <Property Name="Tax" Type="Double" />
-    <Property Name="IsPickupAllowed" Type="Int32" />
-    <Property Name="IsDeliveryAllowed" Type="Int32" />
-    <NavigationProperty Name="Brand" Relationship="Self.FK_Locations_Brand" FromRole="Locations" ToRole="Brand" />
-    <NavigationProperty Name="Categories" Relationship="Self.FK_Category_Locations" FromRole="Locations" ToRole="Category" />
-    <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Locations" FromRole="Locations" ToRole="Customer" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Locations" FromRole="Locations" ToRole="Orders" />
-    <NavigationProperty Name="PushTokens" Relationship="Self.FK_PushToken_Locations" FromRole="Locations" ToRole="PushToken" />
-    <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUser_Locations" FromRole="Locations" ToRole="SubUser" />
-    <NavigationProperty Name="TransferOrders" Relationship="Self.FK_TransferOrder_Locations" FromRole="Locations" ToRole="TransferOrder" />
-    <NavigationProperty Name="TransferOrders1" Relationship="Self.FK_TransferOrder_Locations1" FromRole="Locations" ToRole="TransferOrder" />
-  </EntityType>
   <EntityType Name="Modifier">
     <Key>
       <PropertyRef Name="ModifierID" />
@@ -350,7 +311,7 @@
     <Property Name="LastUpdateBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
     <Property Name="DiscountAmount" Type="Double" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_OrderCheckout_Orders" FromRole="OrderCheckout" ToRole="Orders" />
+    <NavigationProperty Name="Order" Relationship="db_a82b87_zsixrestaurantModel.FK_OrderCheckout_Orders" FromRole="OrderCheckout" ToRole="Order" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
@@ -367,9 +328,9 @@
     <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LastUpdateDT" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Item" Relationship="Self.FK_OrderDetail_Items" FromRole="OrderDetail" ToRole="Items" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Orders" FromRole="OrderDetail" ToRole="Orders" />
     <NavigationProperty Name="OrderDetailAddons" Relationship="Self.FK_OrderDetailAddon_OrderDetail" FromRole="OrderDetail" ToRole="OrderDetailAddon" />
     <NavigationProperty Name="OrderDetailModifiers" Relationship="Self.FK_OrderDetailModifier_OrderDetail" FromRole="OrderDetail" ToRole="OrderDetailModifier" />
+    <NavigationProperty Name="Order" Relationship="db_a82b87_zsixrestaurantModel.FK_OrderDetail_Orders" FromRole="OrderDetail" ToRole="Order" />
   </EntityType>
   <EntityType Name="OrderDetailAddon">
     <Key>
@@ -403,35 +364,6 @@
     <NavigationProperty Name="Modifier" Relationship="Self.FK_OrderDetailModifier_Modifiers" FromRole="OrderDetailModifier" ToRole="Modifiers" />
     <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetailModifier_OrderDetail" FromRole="OrderDetailModifier" ToRole="OrderDetail" />
   </EntityType>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="OrderID" />
-    </Key>
-    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CustomerID" Type="Int32" />
-    <Property Name="TransactionNo" Type="Int32" />
-    <Property Name="OrderNo" Type="Int32" />
-    <Property Name="OrderType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="OrderDate" Type="DateTime" Precision="3" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="SessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="OrderTakerID" Type="Int32" />
-    <Property Name="DeliverUserID" Type="Int32" />
-    <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LastUpdateDT" Type="DateTime" Precision="3" />
-    <Property Name="LocationID" Type="Int32" />
-    <Property Name="OrderPreparedDate" Type="DateTime" Precision="3" />
-    <Property Name="OrderOFDDate" Type="DateTime" Precision="3" />
-    <Property Name="OrderDoneDate" Type="DateTime" Precision="3" />
-    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="CustomerOrders" Relationship="Self.FK_CustomerOrders_Orders" FromRole="Orders" ToRole="CustomerOrders" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_Orders_Locations" FromRole="Orders" ToRole="Locations" />
-    <NavigationProperty Name="OrderCheckouts" Relationship="Self.FK_OrderCheckout_Orders" FromRole="Orders" ToRole="OrderCheckout" />
-    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Orders" FromRole="Orders" ToRole="OrderDetail" />
-    <NavigationProperty Name="SubUser" Relationship="Self.FK_Orders_SubUser" FromRole="Orders" ToRole="SubUser" />
-    <NavigationProperty Name="SubUser1" Relationship="Self.FK_Orders_SubUser1" FromRole="Orders" ToRole="SubUser" />
-    <NavigationProperty Name="TransferOrders" Relationship="Self.FK_TransferOrder_Orders" FromRole="Orders" ToRole="TransferOrder" />
-  </EntityType>
   <EntityType Name="PushToken">
     <Key>
       <PropertyRef Name="TokenID" />
@@ -441,7 +373,7 @@
     <Property Name="LocationID" Type="Int32" />
     <Property Name="StatusID" Type="Int32" />
     <Property Name="Device" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_PushToken_Locations" FromRole="PushToken" ToRole="Locations" />
+    <NavigationProperty Name="Location" Relationship="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" FromRole="PushToken" ToRole="Location" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
@@ -474,9 +406,9 @@
     <Property Name="LocationID" Type="Int32" />
     <Property Name="BrandID" Type="Int32" />
     <NavigationProperty Name="Brand" Relationship="Self.FK_SubUser_Brand" FromRole="SubUser" ToRole="Brand" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_SubUser_Locations" FromRole="SubUser" ToRole="Locations" />
-    <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_SubUser" FromRole="SubUser" ToRole="Orders" />
-    <NavigationProperty Name="Orders1" Relationship="Self.FK_Orders_SubUser1" FromRole="SubUser" ToRole="Orders" />
+    <NavigationProperty Name="Location" Relationship="db_a82b87_zsixrestaurantModel.FK_SubUser_Locations" FromRole="SubUser" ToRole="Location" />
+    <NavigationProperty Name="Orders" Relationship="db_a82b87_zsixrestaurantModel.FK_Orders_SubUser" FromRole="SubUser" ToRole="Order" />
+    <NavigationProperty Name="Orders1" Relationship="db_a82b87_zsixrestaurantModel.FK_Orders_SubUser1" FromRole="SubUser" ToRole="Order" />
   </EntityType>
   <EntityType Name="TodaySpecialItem">
     <Key>
@@ -495,9 +427,9 @@
     <Property Name="OrderID" Type="Int32" />
     <Property Name="FromLocationID" Type="Int32" />
     <Property Name="ToLocationID" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="Self.FK_TransferOrder_Locations" FromRole="TransferOrder" ToRole="Locations" />
-    <NavigationProperty Name="Location1" Relationship="Self.FK_TransferOrder_Locations1" FromRole="TransferOrder" ToRole="Locations" />
-    <NavigationProperty Name="Order" Relationship="Self.FK_TransferOrder_Orders" FromRole="TransferOrder" ToRole="Orders" />
+    <NavigationProperty Name="Location" Relationship="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations" FromRole="TransferOrder" ToRole="Location" />
+    <NavigationProperty Name="Location1" Relationship="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations1" FromRole="TransferOrder" ToRole="Location" />
+    <NavigationProperty Name="Order" Relationship="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Orders" FromRole="TransferOrder" ToRole="Order" />
   </EntityType>
   <EntityType Name="Unit">
     <Key>
@@ -570,18 +502,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Locations_Brand">
-    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
-    <End Role="Locations" Type="Self.Location" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Brand">
-        <PropertyRef Name="BrandID" />
-      </Principal>
-      <Dependent Role="Locations">
-        <PropertyRef Name="BrandID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Modifiers_Brand">
     <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
     <End Role="Modifiers" Type="Self.Modifier" Multiplicity="*" />
@@ -618,18 +538,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Category_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="Category" Type="Self.Category" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Category">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Items_Items">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
     <End Role="Items" Type="Self.Item" Multiplicity="*" />
@@ -639,18 +547,6 @@
       </Principal>
       <Dependent Role="Items">
         <PropertyRef Name="CategoryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Customer_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Customer">
-        <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -687,18 +583,6 @@
       </Principal>
       <Dependent Role="CustomerPayment">
         <PropertyRef Name="CustomerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CustomerOrders_Orders">
-    <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
-    <End Role="CustomerOrders" Type="Self.CustomerOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="OrderID" />
-      </Principal>
-      <Dependent Role="CustomerOrders">
-        <PropertyRef Name="OrderID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -762,66 +646,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PushToken_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="PushToken" Type="Self.PushToken" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="PushToken">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubUser_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="SubUser" Type="Self.SubUser" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="SubUser">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TransferOrder_Locations">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="TransferOrder" Type="Self.TransferOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="TransferOrder">
-        <PropertyRef Name="FromLocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TransferOrder_Locations1">
-    <End Role="Locations" Type="Self.Location" Multiplicity="0..1" />
-    <End Role="TransferOrder" Type="Self.TransferOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Locations">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="TransferOrder">
-        <PropertyRef Name="ToLocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_OrderDetailModifier_Modifiers">
     <End Role="Modifiers" Type="Self.Modifier" Multiplicity="0..1" />
     <End Role="OrderDetailModifier" Type="Self.OrderDetailModifier" Multiplicity="*" />
@@ -831,30 +655,6 @@
       </Principal>
       <Dependent Role="OrderDetailModifier">
         <PropertyRef Name="ModifierID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderCheckout_Orders">
-    <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
-    <End Role="OrderCheckout" Type="Self.OrderCheckout" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="OrderID" />
-      </Principal>
-      <Dependent Role="OrderCheckout">
-        <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderDetail_Orders">
-    <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
-    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="OrderID" />
-      </Principal>
-      <Dependent Role="OrderDetail">
-        <PropertyRef Name="OrderID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -882,42 +682,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Orders_SubUser">
-    <End Role="SubUser" Type="Self.SubUser" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubUser">
-        <PropertyRef Name="SubUserID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="OrderTakerID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Orders_SubUser1">
-    <End Role="SubUser" Type="Self.SubUser" Multiplicity="0..1" />
-    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SubUser">
-        <PropertyRef Name="SubUserID" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="DeliverUserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TransferOrder_Orders">
-    <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
-    <End Role="TransferOrder" Type="Self.TransferOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="OrderID" />
-      </Principal>
-      <Dependent Role="TransferOrder">
-        <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ItemAddonsJunc">
     <End Role="Items" Type="Self.Item" Multiplicity="*" />
     <End Role="Addons" Type="Self.Addon" Multiplicity="*" />
@@ -942,14 +706,12 @@
     <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
     <EntitySet Name="DeliveryAreaBrandJuncs" EntityType="Self.DeliveryAreaBrandJunc" />
     <EntitySet Name="Items" EntityType="Self.Item" />
-    <EntitySet Name="Locations" EntityType="Self.Location" />
     <EntitySet Name="Modifiers" EntityType="Self.Modifier" />
     <EntitySet Name="Offers" EntityType="Self.Offer" />
     <EntitySet Name="OrderCheckouts" EntityType="Self.OrderCheckout" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
     <EntitySet Name="OrderDetailAddons" EntityType="Self.OrderDetailAddon" />
     <EntitySet Name="OrderDetailModifiers" EntityType="Self.OrderDetailModifier" />
-    <EntitySet Name="Orders" EntityType="Self.Order" />
     <EntitySet Name="PushTokens" EntityType="Self.PushToken" />
     <EntitySet Name="Status" EntityType="Self.Status" />
     <EntitySet Name="SubUsers" EntityType="Self.SubUser" />
@@ -976,10 +738,6 @@
       <End Role="Brand" EntitySet="Brands" />
       <End Role="DeliveryAreaBrandJunc" EntitySet="DeliveryAreaBrandJuncs" />
     </AssociationSet>
-    <AssociationSet Name="FK_Locations_Brand" Association="Self.FK_Locations_Brand">
-      <End Role="Brand" EntitySet="Brands" />
-      <End Role="Locations" EntitySet="Locations" />
-    </AssociationSet>
     <AssociationSet Name="FK_Modifiers_Brand" Association="Self.FK_Modifiers_Brand">
       <End Role="Brand" EntitySet="Brands" />
       <End Role="Modifiers" EntitySet="Modifiers" />
@@ -992,17 +750,9 @@
       <End Role="Brand" EntitySet="Brands" />
       <End Role="SubUser" EntitySet="SubUsers" />
     </AssociationSet>
-    <AssociationSet Name="FK_Category_Locations" Association="Self.FK_Category_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Category" EntitySet="Categories" />
-    </AssociationSet>
     <AssociationSet Name="FK_Items_Items" Association="Self.FK_Items_Items">
       <End Role="Category" EntitySet="Categories" />
       <End Role="Items" EntitySet="Items" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Customer_Locations" Association="Self.FK_Customer_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Customer" EntitySet="Customers" />
     </AssociationSet>
     <AssociationSet Name="FK_CustomerAddresses_Customer" Association="Self.FK_CustomerAddresses_Customer">
       <End Role="Customer" EntitySet="Customers" />
@@ -1015,10 +765,6 @@
     <AssociationSet Name="FK_CustomerPayment_Customer" Association="Self.FK_CustomerPayment_Customer">
       <End Role="Customer" EntitySet="Customers" />
       <End Role="CustomerPayment" EntitySet="CustomerPayments" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CustomerOrders_Orders" Association="Self.FK_CustomerOrders_Orders">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="CustomerOrders" EntitySet="CustomerOrders" />
     </AssociationSet>
     <AssociationSet Name="FK_DeliveryAreaBrandJunc_DeliveryAreaBrandJunc" Association="Self.FK_DeliveryAreaBrandJunc_DeliveryAreaBrandJunc">
       <End Role="Delivery" EntitySet="Deliveries" />
@@ -1040,37 +786,9 @@
       <End Role="Items" EntitySet="Items" />
       <End Role="TodaySpecialItems" EntitySet="TodaySpecialItems" />
     </AssociationSet>
-    <AssociationSet Name="FK_Orders_Locations" Association="Self.FK_Orders_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PushToken_Locations" Association="Self.FK_PushToken_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="PushToken" EntitySet="PushTokens" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubUser_Locations" Association="Self.FK_SubUser_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="SubUser" EntitySet="SubUsers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TransferOrder_Locations" Association="Self.FK_TransferOrder_Locations">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="TransferOrder" EntitySet="TransferOrders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TransferOrder_Locations1" Association="Self.FK_TransferOrder_Locations1">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="TransferOrder" EntitySet="TransferOrders" />
-    </AssociationSet>
     <AssociationSet Name="FK_OrderDetailModifier_Modifiers" Association="Self.FK_OrderDetailModifier_Modifiers">
       <End Role="Modifiers" EntitySet="Modifiers" />
       <End Role="OrderDetailModifier" EntitySet="OrderDetailModifiers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderCheckout_Orders" Association="Self.FK_OrderCheckout_Orders">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderDetail_Orders" Association="Self.FK_OrderDetail_Orders">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="OrderDetail" EntitySet="OrderDetails" />
     </AssociationSet>
     <AssociationSet Name="FK_OrderDetailAddon_OrderDetail" Association="Self.FK_OrderDetailAddon_OrderDetail">
       <End Role="OrderDetail" EntitySet="OrderDetails" />
@@ -1079,18 +797,6 @@
     <AssociationSet Name="FK_OrderDetailModifier_OrderDetail" Association="Self.FK_OrderDetailModifier_OrderDetail">
       <End Role="OrderDetail" EntitySet="OrderDetails" />
       <End Role="OrderDetailModifier" EntitySet="OrderDetailModifiers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_SubUser" Association="Self.FK_Orders_SubUser">
-      <End Role="SubUser" EntitySet="SubUsers" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Orders_SubUser1" Association="Self.FK_Orders_SubUser1">
-      <End Role="SubUser" EntitySet="SubUsers" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TransferOrder_Orders" Association="Self.FK_TransferOrder_Orders">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="TransferOrder" EntitySet="TransferOrders" />
     </AssociationSet>
     <AssociationSet Name="ItemAddonsJunc" Association="Self.ItemAddonsJunc">
       <End Role="Items" EntitySet="Items" />
@@ -1619,10 +1325,12 @@
       <Parameter Name="Opentime" Mode="In" Type="String" />
       <Parameter Name="Closetime" Mode="In" Type="String" />
       <Parameter Name="LocationID" Mode="In" Type="Int32" />
-      <Parameter Name="Currency" Mode="In" Type="String" />
       <Parameter Name="Passcode" Mode="In" Type="String" />
+      <Parameter Name="Currency" Mode="In" Type="String" />
       <Parameter Name="Discounts" Mode="In" Type="Double" />
       <Parameter Name="Tax" Mode="In" Type="Double" />
+      <Parameter Name="IsPickupAllowed" Mode="In" Type="Int32" />
+      <Parameter Name="IsDeliveryAllowed" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_updateModifier_Admin">
       <Parameter Name="Name" Mode="In" Type="String" />
@@ -1658,6 +1366,64 @@
       <Parameter Name="ItemSettingTitle" Mode="In" Type="String" />
       <Parameter Name="IsItemSetting" Mode="In" Type="Boolean" />
     </FunctionImport>
+    <EntitySet Name="Locations" EntityType="db_a82b87_zsixrestaurantModel.Location" />
+    <AssociationSet Name="FK_Locations_Brand" Association="db_a82b87_zsixrestaurantModel.FK_Locations_Brand">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_Locations" Association="db_a82b87_zsixrestaurantModel.FK_Category_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Locations" Association="db_a82b87_zsixrestaurantModel.FK_Customer_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PushToken_Locations" Association="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="PushToken" EntitySet="PushTokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubUser_Locations" Association="db_a82b87_zsixrestaurantModel.FK_SubUser_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="SubUser" EntitySet="SubUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransferOrder_Locations" Association="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="TransferOrder" EntitySet="TransferOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransferOrder_Locations1" Association="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations1">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="TransferOrder" EntitySet="TransferOrders" />
+    </AssociationSet>
+    <EntitySet Name="Orders" EntityType="db_a82b87_zsixrestaurantModel.Order" />
+    <AssociationSet Name="FK_CustomerOrders_Orders" Association="db_a82b87_zsixrestaurantModel.FK_CustomerOrders_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="CustomerOrder" EntitySet="CustomerOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_Locations" Association="db_a82b87_zsixrestaurantModel.FK_Orders_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderCheckout_Orders" Association="db_a82b87_zsixrestaurantModel.FK_OrderCheckout_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderCheckout" EntitySet="OrderCheckouts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Orders" Association="db_a82b87_zsixrestaurantModel.FK_OrderDetail_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_SubUser" Association="db_a82b87_zsixrestaurantModel.FK_Orders_SubUser">
+      <End Role="SubUser" EntitySet="SubUsers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orders_SubUser1" Association="db_a82b87_zsixrestaurantModel.FK_Orders_SubUser1">
+      <End Role="SubUser" EntitySet="SubUsers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransferOrder_Orders" Association="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Orders">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="TransferOrder" EntitySet="TransferOrders" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_authenticateUser_admin_Result">
     <Property Type="Int32" Name="BrandID" Nullable="false" />
@@ -2280,4 +2046,245 @@
     <Property Type="String" Name="TimeSlot" Nullable="false" MaxLength="32" />
     <Property Type="Double" Name="Sales" Nullable="false" />
   </ComplexType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LicenseID" Type="Int32" Nullable="false" />
+    <Property Name="DeliveryServices" Type="Boolean" />
+    <Property Name="DeliveryCharges" Type="Double" />
+    <Property Name="DeliveryTime" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="MinOrderAmount" Type="Double" />
+    <Property Name="Longitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="Opentime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Closetime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Passcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Discounts" Type="Double" />
+    <Property Name="Tax" Type="Double" />
+    <Property Name="IsPickupAllowed" Type="Int32" />
+    <Property Name="IsDeliveryAllowed" Type="Int32" />
+    <Property Name="IsDineInAllowed" Type="Int32" />
+    <Property Name="IsAdvanceOrder" Type="Int32" />
+    <NavigationProperty Name="Brand" Relationship="db_a82b87_zsixrestaurantModel.FK_Locations_Brand" FromRole="Location" ToRole="Brand" />
+    <NavigationProperty Name="Categories" Relationship="db_a82b87_zsixrestaurantModel.FK_Category_Locations" FromRole="Location" ToRole="Category" />
+    <NavigationProperty Name="Customers" Relationship="db_a82b87_zsixrestaurantModel.FK_Customer_Locations" FromRole="Location" ToRole="Customer" />
+    <NavigationProperty Name="PushTokens" Relationship="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" FromRole="Location" ToRole="PushToken" />
+    <NavigationProperty Name="SubUsers" Relationship="db_a82b87_zsixrestaurantModel.FK_SubUser_Locations" FromRole="Location" ToRole="SubUser" />
+    <NavigationProperty Name="TransferOrders" Relationship="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations" FromRole="Location" ToRole="TransferOrder" />
+    <NavigationProperty Name="TransferOrders1" Relationship="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations1" FromRole="Location" ToRole="TransferOrder" />
+    <NavigationProperty Name="Orders" Relationship="db_a82b87_zsixrestaurantModel.FK_Orders_Locations" FromRole="Location" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Locations_Brand">
+    <End Type="db_a82b87_zsixrestaurantModel.Brand" Role="Brand" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_Locations">
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.Category" Role="Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Locations">
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PushToken_Locations">
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.PushToken" Role="PushToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="PushToken">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubUser_Locations">
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.SubUser" Role="SubUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="SubUser">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransferOrder_Locations">
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.TransferOrder" Role="TransferOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="TransferOrder">
+        <PropertyRef Name="FromLocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransferOrder_Locations1">
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.TransferOrder" Role="TransferOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="TransferOrder">
+        <PropertyRef Name="ToLocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="TransactionNo" Type="Int32" />
+    <Property Name="OrderNo" Type="Int32" />
+    <Property Name="OrderType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="SessionID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OrderTakerID" Type="Int32" />
+    <Property Name="DeliverUserID" Type="Int32" />
+    <Property Name="LastUpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdateDT" Type="DateTime" Precision="3" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="OrderPreparedDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderOFDDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderDoneDate" Type="DateTime" Precision="3" />
+    <Property Name="AdvanceOrderPunchDate" Type="DateTime" Precision="3" />
+    <Property Name="AdvanceOrderDate" Type="DateTime" Precision="3" />
+    <Property Name="IsAdvanceOrder" Type="Boolean" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CustomerOrders" Relationship="db_a82b87_zsixrestaurantModel.FK_CustomerOrders_Orders" FromRole="Order" ToRole="CustomerOrder" />
+    <NavigationProperty Name="Location" Relationship="db_a82b87_zsixrestaurantModel.FK_Orders_Locations" FromRole="Order" ToRole="Location" />
+    <NavigationProperty Name="OrderCheckouts" Relationship="db_a82b87_zsixrestaurantModel.FK_OrderCheckout_Orders" FromRole="Order" ToRole="OrderCheckout" />
+    <NavigationProperty Name="OrderDetails" Relationship="db_a82b87_zsixrestaurantModel.FK_OrderDetail_Orders" FromRole="Order" ToRole="OrderDetail" />
+    <NavigationProperty Name="SubUser" Relationship="db_a82b87_zsixrestaurantModel.FK_Orders_SubUser" FromRole="Order" ToRole="SubUser" />
+    <NavigationProperty Name="SubUser1" Relationship="db_a82b87_zsixrestaurantModel.FK_Orders_SubUser1" FromRole="Order" ToRole="SubUser" />
+    <NavigationProperty Name="TransferOrders" Relationship="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Orders" FromRole="Order" ToRole="TransferOrder" />
+  </EntityType>
+  <Association Name="FK_CustomerOrders_Orders">
+    <End Type="db_a82b87_zsixrestaurantModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.CustomerOrder" Role="CustomerOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="CustomerOrder">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_Locations">
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderCheckout_Orders">
+    <End Type="db_a82b87_zsixrestaurantModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.OrderCheckout" Role="OrderCheckout" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderCheckout">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Orders">
+    <End Type="db_a82b87_zsixrestaurantModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_SubUser">
+    <End Type="db_a82b87_zsixrestaurantModel.SubUser" Role="SubUser" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubUser">
+        <PropertyRef Name="SubUserID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OrderTakerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orders_SubUser1">
+    <End Type="db_a82b87_zsixrestaurantModel.SubUser" Role="SubUser" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubUser">
+        <PropertyRef Name="SubUserID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="DeliverUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransferOrder_Orders">
+    <End Type="db_a82b87_zsixrestaurantModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.TransferOrder" Role="TransferOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="TransferOrder">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -222,7 +222,10 @@ namespace BAL.Repositories
                         OrderPreparedDate = i.OrderPreparedDate,
                         Remarks = i.Remarks,
                         OrderStatus = lstOrderStatus,
-                        CustomerOrders = ocustomer
+                        CustomerOrders = ocustomer,
+                        //AdvanceOrderDate = i.AdvanceOrderDate,
+                        IsAdvanceOrder = i.IsAdvanceOrder,
+                        AdvanceOrderPunchDate = i.AdvanceOrderPunchDate,
                     });
                 }
                 rsp.Orders = bll;
@@ -242,12 +245,9 @@ namespace BAL.Repositories
         }
         public RspOrderPunch OrderPunch(OrdersBLL obj)
         {
-
             RspOrderPunch rsp;
-          
             try
             {
-                
                 if (obj.AppVersion != "26")
                 {
                     rsp = new RspOrderPunch();
@@ -266,7 +266,6 @@ namespace BAL.Repositories
                     rsp.OrderID = 0;
                     return rsp;
                 }
-
                 var settings = DBContext.Locations.Where(x => x.LocationID == obj.LocationID).FirstOrDefault();
                 if (settings != null)
                 {
@@ -297,10 +296,25 @@ namespace BAL.Repositories
                             rsp.OrderID = 0;
                             return rsp;
                         }
+                        if (settings.IsDineInAllowed != 1 && obj.OrderType == "3")
+                        {
+                            rsp = new RspOrderPunch();
+                            rsp.status = (int)eStatus.Exception;
+                            rsp.description = "DineIn is temporary closed!";
+                            rsp.OrderID = 0;
+                            return rsp;
+                        }
+                        if (settings.IsAdvanceOrder != 1)
+                        {
+                            rsp = new RspOrderPunch();
+                            rsp.status = (int)eStatus.Exception;
+                            rsp.description = "Advance Order is temporary closed!";
+                            rsp.OrderID = 0;
+                            return rsp;
+                        }
                     }
                     catch { }
                 }
-
                 if (!isAllowcheckout)
                 {
                     rsp = new RspOrderPunch();
@@ -309,7 +323,6 @@ namespace BAL.Repositories
                     rsp.OrderID = 0;
                     return rsp;
                 }
-
                 using (var dbContextTransaction = DBContext.Database.BeginTransaction())
                 {
                     try
@@ -355,19 +368,33 @@ namespace BAL.Repositories
                                 StatusID = 101
                             });
                         }
-
                         orders.TransactionNo = DBContext.Orders.Where(x => x.Location.BrandID == obj.BrandID).Max(x => x.TransactionNo);
+
+                        var ondate = obj.IsAdvanceOrder == true ? Convert.ToDateTime(obj.AdvanceOrderDate).Date : currDate.Date;
+
                         orders.OrderNo = DBContext.Orders.Where(x =>
                         x.LocationID == orders.LocationID
                         && DbFunctions.TruncateTime(x.OrderDate) == currDate.Date
                         ).Max(x => x.OrderNo);
-
                         orders.TransactionNo = orders.TransactionNo == null ? 1 : orders.TransactionNo + 1;
                         orders.OrderNo = orders.OrderNo == null ? 1 : orders.OrderNo + 1;
+                        if (orders.IsAdvanceOrder == true)
+                        {
+                            orders.OrderDate = obj.AdvanceOrderDate;
+                        }
+                        else
+                        {
+                            orders.OrderDate = DateTime.UtcNow.AddMinutes(300);
+
+                        }
                         orders.OrderDate = DateTime.UtcNow.AddMinutes(300);
                         orders.LastUpdateBy = orders.CustomerID.ToString();
                         orders.LastUpdateDT = DateTime.UtcNow.AddMinutes(300);
+                        orders.OrderType = obj.OrderType;
                         orders.StatusID = 101;
+
+                        orders.AdvanceOrderPunchDate = DateTime.UtcNow.AddMinutes(300);
+
                         foreach (var i in orders.OrderDetails)
                         {
                             i.Price = Math.Round((Convert.ToDouble(i.Quantity) * Convert.ToDouble(i.Price)), 2);
@@ -400,11 +427,9 @@ namespace BAL.Repositories
                             item.LastUpdatedBy = orders.CustomerID.ToString();
                             item.LastUpdatedDate = DateTime.UtcNow.AddMinutes(300);
                         }
-
                         Order data = DBContext.Orders.Add(orders);
                         DBContext.SaveChanges();
                         dbContextTransaction.Commit();
-
                         try
                         {
                             var getTokens = DBContext.PushTokens.Where(x => x.LocationID == obj.LocationID).ToList();
@@ -421,14 +446,12 @@ namespace BAL.Repositories
                         catch (Exception)
                         {
                         }
-
                         rsp = new RspOrderPunch();
                         rsp.status = (int)eStatus.Success;
                         rsp.description = "Your order has been punched successfully.";
                         rsp.OrderID = data.OrderID;
                         rsp.OrderNo = data.OrderNo;
                     }
-
                     catch (Exception ex)
                     {
                         dbContextTransaction.Rollback();
@@ -570,6 +593,9 @@ namespace BAL.Repositories
                         OrderType = i.OrderType,
                         SessionID = i.SessionID,
                         TransactionNo = i.TransactionNo,
+                        AdvanceOrderPunchDate = DateTime.UtcNow,
+                        //AdvanceOrderDate = i.AdvanceOrderDate,
+                        IsAdvanceOrder = i.IsAdvanceOrder,
 
                         OrderDetails = lstOD,
                         OrderCheckouts = oc,
@@ -728,7 +754,10 @@ namespace BAL.Repositories
                         OrderOFDDate = i.OrderOFDDate,
                         OrderPreparedDate = i.OrderPreparedDate,
                         Remarks = i.Remarks,
-                        OrderStatus = i.OrderStatus
+                        OrderStatus = i.OrderStatus,
+                        AdvanceOrderPunchDate = i.AdvanceOrderPunchDate,
+                        //AdvanceOrderDate = i.AdvanceOrderDate,
+                        IsAdvanceOrder = i.IsAdvanceOrder,
                     });
                 }
                 rsp.Orders = bll;
@@ -878,6 +907,9 @@ namespace BAL.Repositories
                         OrderDetails = lstOD,
                         OrderCheckouts = oc,
                         CustomerOrders = ocustomer,
+                        //AdvanceOrderDate=i.AdvanceOrderDate,
+                        AdvanceOrderPunchDate = DateTime.UtcNow,
+                        IsAdvanceOrder = i.IsAdvanceOrder,
                         BrandID = i.BrandID,
                         OrderDoneDate = i.OrderDoneDate,
                         OrderOFDDate = i.OrderOFDDate,
@@ -940,7 +972,6 @@ namespace BAL.Repositories
 
             return rsp;
         }
-
         public Rsp UpdateOrderAdmin(int OrderID, int StatusID)
         {
             Rsp rsp = new Rsp();

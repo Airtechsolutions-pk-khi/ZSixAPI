@@ -235,7 +235,7 @@ namespace BAL.Repositories
             var rsp = new RspAdminLogin();
             try
             {
-                var data = DBContext.Locations.Where(x => x.Passcode == passcode).FirstOrDefault();
+                var data = DBContext.Locations.Where(x => x.Passcode == passcode && x.StatusID == 1).FirstOrDefault();
                 if (data != null)
                 {
                     rsp.LocationID = data.LocationID;
