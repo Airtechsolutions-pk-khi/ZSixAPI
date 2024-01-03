@@ -37,24 +37,27 @@ namespace DAL.DBEntities
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
         public virtual DbSet<CustomerDetail> CustomerDetails { get; set; }
         public virtual DbSet<CustomerOrderDetail> CustomerOrderDetails { get; set; }
-        public virtual DbSet<CustomerOrder> CustomerOrders { get; set; }
         public virtual DbSet<CustomerPayment> CustomerPayments { get; set; }
         public virtual DbSet<Delivery> Deliveries { get; set; }
         public virtual DbSet<DeliveryAreaBrandJunc> DeliveryAreaBrandJuncs { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Modifier> Modifiers { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
-        public virtual DbSet<OrderCheckout> OrderCheckouts { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<OrderDetailAddon> OrderDetailAddons { get; set; }
         public virtual DbSet<OrderDetailModifier> OrderDetailModifiers { get; set; }
-        public virtual DbSet<PushToken> PushTokens { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<SubUser> SubUsers { get; set; }
         public virtual DbSet<TodaySpecialItem> TodaySpecialItems { get; set; }
         public virtual DbSet<TransferOrder> TransferOrders { get; set; }
         public virtual DbSet<Unit> Units { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
+        public virtual DbSet<DeliveryBoy> DeliveryBoys { get; set; }
+        public virtual DbSet<DeliveryBoyBrandJunc> DeliveryBoyBrandJuncs { get; set; }
+        public virtual DbSet<PushToken> PushTokens { get; set; }
+        public virtual DbSet<Reservation> Reservations { get; set; }
+        public virtual DbSet<OrderCheckout> OrderCheckouts { get; set; }
+        public virtual DbSet<CustomerOrder> CustomerOrders { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
     
         public virtual ObjectResult<sp_authenticateUser_admin_Result> sp_authenticateUser_admin(string email, string password)
@@ -984,7 +987,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insertItemSettings_Admin", brandIDParameter, itemsParameter);
         }
     
-        public virtual int sp_insertLocation_Admin(string name, string description, string address, string contactNo, string email, Nullable<int> licenseID, Nullable<bool> deliveryServices, Nullable<double> deliveryCharges, string deliveryTime, Nullable<double> minOrderAmount, string longitude, string latitude, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, string imageURL, Nullable<int> brandID, string opentime, string closetime, Nullable<int> locationID, string currency, string passcode, Nullable<double> discounts, Nullable<double> tax, Nullable<int> isPickupAllowed, Nullable<int> isDeliveryAllowed)
+        public virtual int sp_insertLocation_Admin(string name, string description, string address, string contactNo, string email, Nullable<int> licenseID, Nullable<bool> deliveryServices, Nullable<double> deliveryCharges, string deliveryTime, Nullable<double> minOrderAmount, string longitude, string latitude, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, string imageURL, Nullable<int> brandID, string opentime, string closetime, Nullable<int> locationID, string currency, string passcode, Nullable<double> discounts, Nullable<double> tax, Nullable<int> isPickupAllowed, Nullable<int> isDeliveryAllowed, Nullable<int> isAdvanceOrder, Nullable<int> isDineInAllowed)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
@@ -1090,7 +1093,15 @@ namespace DAL.DBEntities
                 new ObjectParameter("IsDeliveryAllowed", isDeliveryAllowed) :
                 new ObjectParameter("IsDeliveryAllowed", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insertLocation_Admin", nameParameter, descriptionParameter, addressParameter, contactNoParameter, emailParameter, licenseIDParameter, deliveryServicesParameter, deliveryChargesParameter, deliveryTimeParameter, minOrderAmountParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, imageURLParameter, brandIDParameter, opentimeParameter, closetimeParameter, locationIDParameter, currencyParameter, passcodeParameter, discountsParameter, taxParameter, isPickupAllowedParameter, isDeliveryAllowedParameter);
+            var isAdvanceOrderParameter = isAdvanceOrder.HasValue ?
+                new ObjectParameter("IsAdvanceOrder", isAdvanceOrder) :
+                new ObjectParameter("IsAdvanceOrder", typeof(int));
+    
+            var isDineInAllowedParameter = isDineInAllowed.HasValue ?
+                new ObjectParameter("IsDineInAllowed", isDineInAllowed) :
+                new ObjectParameter("IsDineInAllowed", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insertLocation_Admin", nameParameter, descriptionParameter, addressParameter, contactNoParameter, emailParameter, licenseIDParameter, deliveryServicesParameter, deliveryChargesParameter, deliveryTimeParameter, minOrderAmountParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, imageURLParameter, brandIDParameter, opentimeParameter, closetimeParameter, locationIDParameter, currencyParameter, passcodeParameter, discountsParameter, taxParameter, isPickupAllowedParameter, isDeliveryAllowedParameter, isAdvanceOrderParameter, isDineInAllowedParameter);
         }
     
         public virtual int sp_insertModifier_Admin(string name, string arabicName, string description, string image, Nullable<double> price, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, Nullable<int> brandID, Nullable<int> modifierID)
@@ -1820,7 +1831,7 @@ namespace DAL.DBEntities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateItem_Admin", categoryIDParameter, unitIDParameter, nameParameter, arabicNameParameter, descriptionParameter, imageParameter, barcodeParameter, sKUParameter, displayOrderParameter, priceParameter, costParameter, itemTypeParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, isFeaturedParameter, caloriesParameter, itemIDParameter, isApplyDiscountParameter);
         }
     
-        public virtual int sp_updateLocation_Admin(string name, string description, string address, string contactNo, string email, Nullable<int> licenseID, Nullable<bool> deliveryServices, Nullable<double> deliveryCharges, string deliveryTime, Nullable<double> minOrderAmount, string longitude, string latitude, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, string imageURL, Nullable<int> brandID, string opentime, string closetime, Nullable<int> locationID, string passcode, string currency, Nullable<double> discounts, Nullable<double> tax, Nullable<int> isPickupAllowed, Nullable<int> isDeliveryAllowed)
+        public virtual int sp_updateLocation_Admin(string name, string description, string address, string contactNo, string email, Nullable<int> licenseID, Nullable<bool> deliveryServices, Nullable<double> deliveryCharges, string deliveryTime, Nullable<double> minOrderAmount, string longitude, string latitude, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, string imageURL, Nullable<int> brandID, string opentime, string closetime, Nullable<int> locationID, string passcode, string currency, Nullable<double> discounts, Nullable<double> tax, Nullable<int> isPickupAllowed, Nullable<int> isDeliveryAllowed, Nullable<int> isAdvanceOrder, Nullable<int> isDineInAllowed)
         {
             var nameParameter = name != null ?
                 new ObjectParameter("Name", name) :
@@ -1926,7 +1937,15 @@ namespace DAL.DBEntities
                 new ObjectParameter("IsDeliveryAllowed", isDeliveryAllowed) :
                 new ObjectParameter("IsDeliveryAllowed", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateLocation_Admin", nameParameter, descriptionParameter, addressParameter, contactNoParameter, emailParameter, licenseIDParameter, deliveryServicesParameter, deliveryChargesParameter, deliveryTimeParameter, minOrderAmountParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, imageURLParameter, brandIDParameter, opentimeParameter, closetimeParameter, locationIDParameter, passcodeParameter, currencyParameter, discountsParameter, taxParameter, isPickupAllowedParameter, isDeliveryAllowedParameter);
+            var isAdvanceOrderParameter = isAdvanceOrder.HasValue ?
+                new ObjectParameter("IsAdvanceOrder", isAdvanceOrder) :
+                new ObjectParameter("IsAdvanceOrder", typeof(int));
+    
+            var isDineInAllowedParameter = isDineInAllowed.HasValue ?
+                new ObjectParameter("IsDineInAllowed", isDineInAllowed) :
+                new ObjectParameter("IsDineInAllowed", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_updateLocation_Admin", nameParameter, descriptionParameter, addressParameter, contactNoParameter, emailParameter, licenseIDParameter, deliveryServicesParameter, deliveryChargesParameter, deliveryTimeParameter, minOrderAmountParameter, longitudeParameter, latitudeParameter, lastUpdatedByParameter, lastUpdatedDateParameter, statusIDParameter, imageURLParameter, brandIDParameter, opentimeParameter, closetimeParameter, locationIDParameter, passcodeParameter, currencyParameter, discountsParameter, taxParameter, isPickupAllowedParameter, isDeliveryAllowedParameter, isAdvanceOrderParameter, isDineInAllowedParameter);
         }
     
         public virtual int sp_updateModifier_Admin(string name, string arabicName, string description, string image, Nullable<double> price, string lastUpdatedBy, Nullable<System.DateTime> lastUpdatedDate, Nullable<int> statusID, Nullable<int> brandID, Nullable<int> modifierID)

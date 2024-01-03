@@ -355,6 +355,7 @@ namespace DAL.Models
     {
         public int Device { get; set; }
         public int TokenID { get; set; }
+        public int CustomerID { get; set; }
         public string Token { get; set; }
         public Nullable<int> LocationID { get; set; }
         public Nullable<int> StatusID { get; set; }
@@ -394,6 +395,7 @@ namespace DAL.Models
         public string BrandLogo { get; set; }
         public string Remarks { get; set; }
         public string AppVersion { get; set; }
+        
         public OrderCheckoutBLL OrderCheckouts { get; set; }
         public OrderCustomerBLL CustomerOrders { get; set; }
         public List<OrderDetailBLL> OrderDetails { get; set; }
@@ -464,6 +466,7 @@ namespace DAL.Models
         public Nullable<double> AmountPaid { get; set; }
         public Nullable<double> AmountTotal { get; set; }
         public Nullable<double> ServiceCharges { get; set; }
+        public Nullable<int> DeliveryAreaID { get; set; }
         public Nullable<double> GrandTotal { get; set; }
         public Nullable<double> Tax { get; set; }
         public Nullable<double> DiscountAmount { get; set; }
@@ -483,6 +486,7 @@ namespace DAL.Models
         public string Address { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
+        public string TableNo { get; set; }
         public string LocationURL { get; set; }
         public Nullable<int> StatusID { get; set; }
         public string LastUpdatedBy { get; set; }
@@ -490,6 +494,7 @@ namespace DAL.Models
         public Nullable<int> OrderID { get; set; }
         public string AddressNickName { get; set; }
         public string AddressType { get; set; }
+        
     }
     public class PushNoticationBLL
     {

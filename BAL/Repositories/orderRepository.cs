@@ -152,6 +152,7 @@ namespace BAL.Repositories
                         ocustomer.AddressNickName = _OCustomer.AddressNickName == null ? "" : _OCustomer.AddressNickName;
                         ocustomer.AddressType = _OCustomer.AddressType == null ? "Other" : _OCustomer.AddressType;
                         ocustomer.OrderID = _OCustomer.OrderID;
+                        ocustomer.TableNo = _OCustomer.TableNo;
                     }
                     else ocustomer = null;
 
@@ -348,25 +349,71 @@ namespace BAL.Repositories
                                 Mobile = tempCustomerOrders.Mobile,
                                 Name = tempCustomerOrders.Name,
                                 AddressNickName = tempCustomerOrders.AddressNickName,
-                                AddressType = tempCustomerOrders.AddressType
+                                AddressType = tempCustomerOrders.AddressType,
+                                TableNo = tempCustomerOrders.TableNo
                             });
                         }
 
+                        //if (tempCheckout != null)
+                        //{
+                        //    orders.OrderCheckouts = new List<OrderCheckout>();
+                        //    orders.OrderCheckouts.Add(new OrderCheckout
+                        //    {
+                        //        AmountPaid = tempCheckout.AmountPaid,
+                        //        AmountTotal = tempCheckout.AmountTotal,
+                        //        CheckoutDate = DateTime.UtcNow.AddMinutes(300),
+                        //        GrandTotal = tempCheckout.GrandTotal,
+                        //        ServiceCharges = tempCheckout.ServiceCharges == null ? 0 : tempCheckout.ServiceCharges,
+                        //        PaymentMode = tempCheckout.PaymentMode,
+                        //        Tax = tempCheckout.Tax,
+                        //        DiscountAmount = tempCheckout.DiscountAmount ?? 0,
+                        //        StatusID = 101
+                        //    });
+                        //}
                         if (tempCheckout != null)
                         {
                             orders.OrderCheckouts = new List<OrderCheckout>();
-                            orders.OrderCheckouts.Add(new OrderCheckout
+
+                            if (tempCheckout.DeliveryAreaID != null && tempCheckout.DeliveryAreaID != 0)
                             {
-                                AmountPaid = tempCheckout.AmountPaid,
-                                AmountTotal = tempCheckout.AmountTotal,
-                                CheckoutDate = DateTime.UtcNow.AddMinutes(300),
-                                GrandTotal = tempCheckout.GrandTotal,
-                                ServiceCharges = tempCheckout.ServiceCharges == null ? 0 : tempCheckout.ServiceCharges,
-                                PaymentMode = tempCheckout.PaymentMode,
-                                Tax = tempCheckout.Tax,
-                                DiscountAmount = tempCheckout.DiscountAmount ?? 0,
-                                StatusID = 101
-                            });
+                                var deliveryArea = DBContext.Deliveries.Where(x => x.DeliveryAreaID == tempCheckout.DeliveryAreaID).FirstOrDefault();
+
+                                var dc = tempCheckout.ServiceCharges;
+                                var GT = tempCheckout.GrandTotal - dc;
+                                var amount = deliveryArea.Amount;
+                                var GTotal = GT + amount;
+
+                                orders.OrderCheckouts.Add(new OrderCheckout
+                                {
+                                    AmountPaid = tempCheckout.AmountPaid,
+                                    DeliveryAreaID = tempCheckout.DeliveryAreaID,
+                                    AmountTotal = tempCheckout.AmountTotal,
+                                    CheckoutDate = DateTime.UtcNow.AddMinutes(300),
+                                    GrandTotal = GTotal,
+                                    ServiceCharges = amount,
+                                    PaymentMode = tempCheckout.PaymentMode,
+                                    Tax = tempCheckout.Tax,
+                                    DiscountAmount = tempCheckout.DiscountAmount ?? 0,
+
+                                    StatusID = 101
+                                });
+                            }
+                            else
+                            {
+                                orders.OrderCheckouts.Add(new OrderCheckout
+                                {
+                                    AmountPaid = tempCheckout.AmountPaid,
+                                    AmountTotal = tempCheckout.AmountTotal,
+                                    CheckoutDate = DateTime.UtcNow.AddMinutes(300),
+                                    GrandTotal = tempCheckout.GrandTotal,
+                                    ServiceCharges = tempCheckout.ServiceCharges == null ? 0 : tempCheckout.ServiceCharges,
+                                    PaymentMode = tempCheckout.PaymentMode,
+                                    Tax = tempCheckout.Tax,
+                                    DiscountAmount = tempCheckout.DiscountAmount ?? 0,
+                                    StatusID = 101
+                                });
+                            }
+
                         }
                         orders.TransactionNo = DBContext.Orders.Where(x => x.Location.BrandID == obj.BrandID).Max(x => x.TransactionNo);
 
@@ -391,6 +438,7 @@ namespace BAL.Repositories
                         orders.LastUpdateBy = orders.CustomerID.ToString();
                         orders.LastUpdateDT = DateTime.UtcNow.AddMinutes(300);
                         orders.OrderType = obj.OrderType;
+                         
                         orders.StatusID = 101;
 
                         orders.AdvanceOrderPunchDate = DateTime.UtcNow.AddMinutes(300);
@@ -441,6 +489,22 @@ namespace BAL.Repositories
                                 token.Message = "You have new order for delivery.";
                                 token.DeviceID = item.Token;
                                 PushNotificationAndroid(token);
+                            }
+                        }
+                        catch (Exception)
+                        {
+                        }
+                        try
+                        {
+                            var getTokens = DBContext.PushTokens.Where(x => x.CustomerID == obj.CustomerID).ToList();
+                            foreach (var item in getTokens)
+                            {
+                                var token = new PushNoticationBLL();
+                                obj.BrandName = obj.BrandName ?? "";
+                                token.Title = obj.BrandName == "" ? "Z-Six" : obj.BrandName + " | Order Status";
+                                token.Message = "Thankyou we have received your order. " + "OrderNo " + data.TransactionNo;
+                                token.DeviceID = item.Token;
+                                PushNotificationAndroidCustomer(token);
                             }
                         }
                         catch (Exception)
@@ -702,6 +766,7 @@ namespace BAL.Repositories
                         oc.LastUpdatedDate = _OC.LastUpdatedDate;
                         oc.LastUpdateBy = _OC.LastUpdateBy;
                         oc.OrderID = _OC.OrderID;
+                        
                     }
                     else oc = null;
 
@@ -725,6 +790,7 @@ namespace BAL.Repositories
                         ocustomer.AddressNickName = _OCustomer.AddressNickName == null ? "" : _OCustomer.AddressNickName;
                         ocustomer.AddressType = _OCustomer.AddressType == null ? "Other" : _OCustomer.AddressType;
                         ocustomer.OrderID = _OCustomer.OrderID;
+                        ocustomer.TableNo = _OCustomer.TableNo;
                     }
                     else ocustomer = null;
 
@@ -952,6 +1018,25 @@ namespace BAL.Repositories
 
                         Order order = DBContext.Orders.Where(x => x.OrderID == obj.OrderID).FirstOrDefault();
                         order.StatusID = 104;
+                        if (order.StatusID == 104)
+                        {
+                            try
+                            {
+                                var getTokens = DBContext.PushTokens.Where(x => x.CustomerID == order.CustomerID).ToList();
+                                foreach (var item in getTokens)
+                                {
+                                    var token = new PushNoticationBLL();
+                                    //order.BrandName = obj.BrandName ?? "";
+                                    token.Title = "ZSix | Order Status";
+                                    token.Message = "Your Order is Cancelled Due To Some Reasons";
+                                    token.DeviceID = item.Token;
+                                    PushNotificationAndroidCustomer(token);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                            }
+                        }
                         order.LastUpdateDT = currDate;
                         DBContext.Orders.AddOrUpdate(order);
                         DBContext.SaveChanges();
@@ -994,10 +1079,42 @@ namespace BAL.Repositories
                         if (StatusID == 102)
                         {
                             order.OrderPreparedDate = currDate;
+                            try
+                            {
+                                var getTokens = DBContext.PushTokens.Where(x => x.CustomerID == order.CustomerID).ToList();
+                                foreach (var item in getTokens)
+                                {
+                                    var token = new PushNoticationBLL();
+                                    //order.BrandName = obj.BrandName ?? "";
+                                    token.Title = "ZSix | Order Status";
+                                    token.Message = "Your Order is now on Preparing";
+                                    token.DeviceID = item.Token;
+                                    PushNotificationAndroidCustomer(token);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                            }
                         }
                         if (StatusID == 103)
                         {
                             order.OrderOFDDate = currDate;
+                            try
+                            {
+                                var getTokens = DBContext.PushTokens.Where(x => x.CustomerID == order.CustomerID).ToList();
+                                foreach (var item in getTokens)
+                                {
+                                    var token = new PushNoticationBLL();
+                                    //order.BrandName = obj.BrandName ?? "";
+                                    token.Title = "ZSix | Order Status";
+                                    token.Message = "Your Order is ready to be delivered";
+                                    token.DeviceID = item.Token;
+                                    PushNotificationAndroidCustomer(token);
+                                }
+                            }
+                            catch (Exception)
+                            {
+                            }
                         }
 
                         order.StatusID = StatusID;

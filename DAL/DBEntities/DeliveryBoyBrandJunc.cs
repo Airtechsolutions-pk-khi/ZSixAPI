@@ -12,15 +12,13 @@ namespace DAL.DBEntities
     using System;
     using System.Collections.Generic;
     
-    public partial class PushToken
+    public partial class DeliveryBoyBrandJunc
     {
-        public int TokenID { get; set; }
-        public string Token { get; set; }
-        public Nullable<int> CustomerID { get; set; }
-        public Nullable<int> LocationID { get; set; }
-        public Nullable<int> StatusID { get; set; }
-        public Nullable<int> Device { get; set; }
+        public int DBAJuncID { get; set; }
+        public Nullable<int> DeliveryBoyID { get; set; }
+        public Nullable<int> BrandID { get; set; }
     
-        public virtual Location Location { get; set; }
+        public virtual Brand Brand { get; set; }
+        public virtual DeliveryBoy DeliveryBoy { get; set; }
     }
 }

@@ -28,6 +28,7 @@ namespace DAL.DBEntities
         public string LastUpdateBy { get; set; }
         public Nullable<System.DateTime> LastUpdatedDate { get; set; }
         public Nullable<double> DiscountAmount { get; set; }
+        public Nullable<int> DeliveryAreaID { get; set; }
     
         public virtual Order Order { get; set; }
     }

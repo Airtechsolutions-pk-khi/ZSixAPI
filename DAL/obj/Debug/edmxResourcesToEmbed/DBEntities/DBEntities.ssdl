@@ -168,6 +168,7 @@
     <Property Name="OrderID" Type="int" />
     <Property Name="AddressType" Type="nvarchar" MaxLength="50" />
     <Property Name="AddressNickName" Type="nvarchar" MaxLength="500" />
+    <Property Name="TableNo" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="CustomerPayment">
     <Key>
@@ -198,6 +199,32 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DeliveryAreaID" Type="int" />
+    <Property Name="BrandID" Type="int" />
+  </EntityType>
+  <EntityType Name="DeliveryBoy">
+    <Key>
+      <PropertyRef Name="DeliveryBoyID" />
+    </Key>
+    <Property Name="DeliveryBoyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DBName" Type="nvarchar" MaxLength="150" />
+    <Property Name="DBAddress" Type="nvarchar" MaxLength="150" />
+    <Property Name="DBContactNo" Type="nvarchar" MaxLength="150" />
+    <Property Name="DBVehicleNo" Type="nvarchar" MaxLength="150" />
+    <Property Name="DBCNICNo" Type="nvarchar" MaxLength="150" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+    <Property Name="UpdatedOn" Type="datetime" />
+    <Property Name="UpdatedBy" Type="nvarchar" MaxLength="150" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="DBImage" Type="nvarchar" MaxLength="150" />
+    <Property Name="Amount" Type="int" />
+  </EntityType>
+  <EntityType Name="DeliveryBoyBrandJunc">
+    <Key>
+      <PropertyRef Name="DBAJuncID" />
+    </Key>
+    <Property Name="DBAJuncID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeliveryBoyID" Type="int" />
     <Property Name="BrandID" Type="int" />
   </EntityType>
   <EntityType Name="ItemAddonsJunc">
@@ -322,6 +349,7 @@
     <Property Name="LastUpdateBy" Type="nvarchar" MaxLength="150" />
     <Property Name="LastUpdatedDate" Type="datetime" />
     <Property Name="DiscountAmount" Type="float" />
+    <Property Name="DeliveryAreaID" Type="int" />
   </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
@@ -397,9 +425,28 @@
     </Key>
     <Property Name="TokenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Token" Type="nvarchar(max)" />
+    <Property Name="CustomerID" Type="int" />
     <Property Name="LocationID" Type="int" />
     <Property Name="StatusID" Type="int" />
     <Property Name="Device" Type="int" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="BrandID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="NumberPerson" Type="int" />
+    <Property Name="ReservationDate" Type="datetime" />
+    <Property Name="LastUpdatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastUpdatedDate" Type="datetime" />
+    <Property Name="SittingArea" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="ReservationStatus" Type="int" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
@@ -588,6 +635,30 @@
       </Principal>
       <Dependent Role="DeliveryAreaBrandJunc">
         <PropertyRef Name="DeliveryAreaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryBoyBrandJunc_Brand">
+    <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="DeliveryBoyBrandJunc" Type="Self.DeliveryBoyBrandJunc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="DeliveryBoyBrandJunc">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryBoyBrandJunc_DeliveryBoy">
+    <End Role="DeliveryBoy" Type="Self.DeliveryBoy" Multiplicity="0..1" />
+    <End Role="DeliveryBoyBrandJunc" Type="Self.DeliveryBoyBrandJunc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryBoy">
+        <PropertyRef Name="DeliveryBoyID" />
+      </Principal>
+      <Dependent Role="DeliveryBoyBrandJunc">
+        <PropertyRef Name="DeliveryBoyID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1213,6 +1284,8 @@
     <Parameter Name="Tax" Type="float" Mode="In" />
     <Parameter Name="IsPickupAllowed" Type="int" Mode="In" />
     <Parameter Name="IsDeliveryAllowed" Type="int" Mode="In" />
+    <Parameter Name="IsAdvanceOrder" Type="int" Mode="In" />
+    <Parameter Name="IsDineInAllowed" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_insertModifier_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Name" Type="nvarchar" Mode="In" />
@@ -1440,6 +1513,8 @@
     <Parameter Name="Tax" Type="float" Mode="In" />
     <Parameter Name="IsPickupAllowed" Type="int" Mode="In" />
     <Parameter Name="IsDeliveryAllowed" Type="int" Mode="In" />
+    <Parameter Name="IsAdvanceOrder" Type="int" Mode="In" />
+    <Parameter Name="IsDineInAllowed" Type="int" Mode="In" />
   </Function>
   <Function Name="sp_updateModifier_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Name" Type="nvarchar" Mode="In" />
@@ -1490,6 +1565,8 @@
     <EntitySet Name="CustomerPayment" EntityType="Self.CustomerPayment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DeliveryAreaBrandJunc" EntityType="Self.DeliveryAreaBrandJunc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliveryBoy" EntityType="Self.DeliveryBoy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliveryBoyBrandJunc" EntityType="Self.DeliveryBoyBrandJunc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemAddonsJunc" EntityType="Self.ItemAddonsJunc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ItemModifiersJunc" EntityType="Self.ItemModifiersJunc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
@@ -1502,6 +1579,7 @@
     <EntitySet Name="OrderDetailModifier" EntityType="Self.OrderDetailModifier" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PushToken" EntityType="Self.PushToken" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubUser" EntityType="Self.SubUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TodaySpecialItems" EntityType="Self.TodaySpecialItems" Schema="dbo" store:Type="Tables" />
@@ -1550,6 +1628,14 @@
     <AssociationSet Name="FK_DeliveryAreaBrandJunc_DeliveryAreaBrandJunc" Association="Self.FK_DeliveryAreaBrandJunc_DeliveryAreaBrandJunc">
       <End Role="Delivery" EntitySet="Delivery" />
       <End Role="DeliveryAreaBrandJunc" EntitySet="DeliveryAreaBrandJunc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryBoyBrandJunc_Brand" Association="Self.FK_DeliveryBoyBrandJunc_Brand">
+      <End Role="Brand" EntitySet="Brand" />
+      <End Role="DeliveryBoyBrandJunc" EntitySet="DeliveryBoyBrandJunc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryBoyBrandJunc_DeliveryBoy" Association="Self.FK_DeliveryBoyBrandJunc_DeliveryBoy">
+      <End Role="DeliveryBoy" EntitySet="DeliveryBoy" />
+      <End Role="DeliveryBoyBrandJunc" EntitySet="DeliveryBoyBrandJunc" />
     </AssociationSet>
     <AssociationSet Name="FK_ItemAddons-Junc_Items" Association="Self.FK_ItemAddons-Junc_Items">
       <End Role="Items" EntitySet="Items" />

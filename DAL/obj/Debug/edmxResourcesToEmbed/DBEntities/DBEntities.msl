@@ -160,27 +160,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="CustomerOrders">
-      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.CustomerOrder">
-        <MappingFragment StoreEntitySet="CustomerOrders">
-          <ScalarProperty Name="CustomerOrderID" ColumnName="CustomerOrderID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-          <ScalarProperty Name="LocationURL" ColumnName="LocationURL" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
-          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
-          <ScalarProperty Name="AddressNickName" ColumnName="AddressNickName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="CustomerPayments">
       <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.CustomerPayment">
         <MappingFragment StoreEntitySet="CustomerPayment">
@@ -273,26 +252,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="OrderCheckouts">
-      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.OrderCheckout">
-        <MappingFragment StoreEntitySet="OrderCheckout">
-          <ScalarProperty Name="OrderCheckoutID" ColumnName="OrderCheckoutID" />
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
-          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
-          <ScalarProperty Name="AmountTotal" ColumnName="AmountTotal" />
-          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
-          <ScalarProperty Name="ServiceCharges" ColumnName="ServiceCharges" />
-          <ScalarProperty Name="Tax" ColumnName="Tax" />
-          <ScalarProperty Name="CheckoutDate" ColumnName="CheckoutDate" />
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
-          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetail">
@@ -336,17 +295,6 @@
           <ScalarProperty Name="StatusID" ColumnName="StatusID" />
           <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
           <ScalarProperty Name="LastUpdateDT" ColumnName="LastUpdateDT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PushTokens">
-      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.PushToken">
-        <MappingFragment StoreEntitySet="PushToken">
-          <ScalarProperty Name="TokenID" ColumnName="TokenID" />
-          <ScalarProperty Name="Token" ColumnName="Token" />
-          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-          <ScalarProperty Name="Device" ColumnName="Device" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1304,6 +1252,108 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryBoys">
+      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.DeliveryBoy">
+        <MappingFragment StoreEntitySet="DeliveryBoy">
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DBImage" ColumnName="DBImage" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="DBCNICNo" ColumnName="DBCNICNo" />
+          <ScalarProperty Name="DBVehicleNo" ColumnName="DBVehicleNo" />
+          <ScalarProperty Name="DBContactNo" ColumnName="DBContactNo" />
+          <ScalarProperty Name="DBAddress" ColumnName="DBAddress" />
+          <ScalarProperty Name="DBName" ColumnName="DBName" />
+          <ScalarProperty Name="DeliveryBoyID" ColumnName="DeliveryBoyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryBoyBrandJuncs">
+      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.DeliveryBoyBrandJunc">
+        <MappingFragment StoreEntitySet="DeliveryBoyBrandJunc">
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="DeliveryBoyID" ColumnName="DeliveryBoyID" />
+          <ScalarProperty Name="DBAJuncID" ColumnName="DBAJuncID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PushTokens">
+      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.PushToken">
+        <MappingFragment StoreEntitySet="PushToken">
+          <ScalarProperty Name="Device" ColumnName="Device" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="ReservationStatus" ColumnName="ReservationStatus" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="SittingArea" ColumnName="SittingArea" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="ReservationDate" ColumnName="ReservationDate" />
+          <ScalarProperty Name="NumberPerson" ColumnName="NumberPerson" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderCheckouts">
+      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.OrderCheckout">
+        <MappingFragment StoreEntitySet="OrderCheckout">
+          <ScalarProperty Name="DeliveryAreaID" ColumnName="DeliveryAreaID" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LastUpdateBy" ColumnName="LastUpdateBy" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="CheckoutDate" ColumnName="CheckoutDate" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="ServiceCharges" ColumnName="ServiceCharges" />
+          <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+          <ScalarProperty Name="AmountTotal" ColumnName="AmountTotal" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderCheckoutID" ColumnName="OrderCheckoutID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerOrders">
+      <EntityTypeMapping TypeName="db_a82b87_zsixrestaurantModel.CustomerOrder">
+        <MappingFragment StoreEntitySet="CustomerOrders">
+          <ScalarProperty Name="TableNo" ColumnName="TableNo" />
+          <ScalarProperty Name="AddressNickName" ColumnName="AddressNickName" />
+          <ScalarProperty Name="AddressType" ColumnName="AddressType" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="LocationURL" ColumnName="LocationURL" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerOrderID" ColumnName="CustomerOrderID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -81,6 +81,7 @@
     <NavigationProperty Name="Offers" Relationship="Self.FK_Offers_Brand" FromRole="Brand" ToRole="Offers" />
     <NavigationProperty Name="SubUsers" Relationship="Self.FK_SubUser_Brand" FromRole="Brand" ToRole="SubUser" />
     <NavigationProperty Name="Locations" Relationship="db_a82b87_zsixrestaurantModel.FK_Locations_Brand" FromRole="Brand" ToRole="Location" />
+    <NavigationProperty Name="DeliveryBoyBrandJuncs" Relationship="db_a82b87_zsixrestaurantModel.FK_DeliveryBoyBrandJunc_Brand" FromRole="Brand" ToRole="DeliveryBoyBrandJunc" />
   </EntityType>
   <EntityType Name="Category">
     <Key>
@@ -169,27 +170,6 @@
     <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="CustomerOrder">
-    <Key>
-      <PropertyRef Name="CustomerOrderID" />
-    </Key>
-    <Property Name="CustomerOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="LocationURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="OrderID" Type="Int32" />
-    <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="AddressNickName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Order" Relationship="db_a82b87_zsixrestaurantModel.FK_CustomerOrders_Orders" FromRole="CustomerOrder" ToRole="Order" />
   </EntityType>
   <EntityType Name="CustomerPayment">
     <Key>
@@ -293,26 +273,6 @@
     <NavigationProperty Name="Brand" Relationship="Self.FK_Offers_Brand" FromRole="Offers" ToRole="Brand" />
     <NavigationProperty Name="Item" Relationship="Self.FK_Offers_Items" FromRole="Offers" ToRole="Items" />
   </EntityType>
-  <EntityType Name="OrderCheckout">
-    <Key>
-      <PropertyRef Name="OrderCheckoutID" />
-    </Key>
-    <Property Name="OrderCheckoutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderID" Type="Int32" />
-    <Property Name="PaymentMode" Type="Int32" />
-    <Property Name="AmountPaid" Type="Double" />
-    <Property Name="AmountTotal" Type="Double" />
-    <Property Name="GrandTotal" Type="Double" />
-    <Property Name="ServiceCharges" Type="Double" />
-    <Property Name="Tax" Type="Double" />
-    <Property Name="CheckoutDate" Type="DateTime" Precision="3" />
-    <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="LastUpdateBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
-    <Property Name="DiscountAmount" Type="Double" />
-    <NavigationProperty Name="Order" Relationship="db_a82b87_zsixrestaurantModel.FK_OrderCheckout_Orders" FromRole="OrderCheckout" ToRole="Order" />
-  </EntityType>
   <EntityType Name="OrderDetail">
     <Key>
       <PropertyRef Name="OrderDetailID" />
@@ -363,17 +323,6 @@
     <Property Name="LastUpdateDT" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Modifier" Relationship="Self.FK_OrderDetailModifier_Modifiers" FromRole="OrderDetailModifier" ToRole="Modifiers" />
     <NavigationProperty Name="OrderDetail" Relationship="Self.FK_OrderDetailModifier_OrderDetail" FromRole="OrderDetailModifier" ToRole="OrderDetail" />
-  </EntityType>
-  <EntityType Name="PushToken">
-    <Key>
-      <PropertyRef Name="TokenID" />
-    </Key>
-    <Property Name="TokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="LocationID" Type="Int32" />
-    <Property Name="StatusID" Type="Int32" />
-    <Property Name="Device" Type="Int32" />
-    <NavigationProperty Name="Location" Relationship="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" FromRole="PushToken" ToRole="Location" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
@@ -701,18 +650,15 @@
     <EntitySet Name="CustomerAddresses" EntityType="Self.CustomerAddress" />
     <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
     <EntitySet Name="CustomerOrderDetails" EntityType="Self.CustomerOrderDetail" />
-    <EntitySet Name="CustomerOrders" EntityType="Self.CustomerOrder" />
     <EntitySet Name="CustomerPayments" EntityType="Self.CustomerPayment" />
     <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
     <EntitySet Name="DeliveryAreaBrandJuncs" EntityType="Self.DeliveryAreaBrandJunc" />
     <EntitySet Name="Items" EntityType="Self.Item" />
     <EntitySet Name="Modifiers" EntityType="Self.Modifier" />
     <EntitySet Name="Offers" EntityType="Self.Offer" />
-    <EntitySet Name="OrderCheckouts" EntityType="Self.OrderCheckout" />
     <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
     <EntitySet Name="OrderDetailAddons" EntityType="Self.OrderDetailAddon" />
     <EntitySet Name="OrderDetailModifiers" EntityType="Self.OrderDetailModifier" />
-    <EntitySet Name="PushTokens" EntityType="Self.PushToken" />
     <EntitySet Name="Status" EntityType="Self.Status" />
     <EntitySet Name="SubUsers" EntityType="Self.SubUser" />
     <EntitySet Name="TodaySpecialItems" EntityType="Self.TodaySpecialItem" />
@@ -1104,6 +1050,8 @@
       <Parameter Name="Tax" Mode="In" Type="Double" />
       <Parameter Name="IsPickupAllowed" Mode="In" Type="Int32" />
       <Parameter Name="IsDeliveryAllowed" Mode="In" Type="Int32" />
+      <Parameter Name="IsAdvanceOrder" Mode="In" Type="Int32" />
+      <Parameter Name="IsDineInAllowed" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_insertModifier_Admin">
       <Parameter Name="Name" Mode="In" Type="String" />
@@ -1331,6 +1279,8 @@
       <Parameter Name="Tax" Mode="In" Type="Double" />
       <Parameter Name="IsPickupAllowed" Mode="In" Type="Int32" />
       <Parameter Name="IsDeliveryAllowed" Mode="In" Type="Int32" />
+      <Parameter Name="IsAdvanceOrder" Mode="In" Type="Int32" />
+      <Parameter Name="IsDineInAllowed" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="sp_updateModifier_Admin">
       <Parameter Name="Name" Mode="In" Type="String" />
@@ -1379,10 +1329,6 @@
       <End Role="Location" EntitySet="Locations" />
       <End Role="Customer" EntitySet="Customers" />
     </AssociationSet>
-    <AssociationSet Name="FK_PushToken_Locations" Association="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations">
-      <End Role="Location" EntitySet="Locations" />
-      <End Role="PushToken" EntitySet="PushTokens" />
-    </AssociationSet>
     <AssociationSet Name="FK_SubUser_Locations" Association="db_a82b87_zsixrestaurantModel.FK_SubUser_Locations">
       <End Role="Location" EntitySet="Locations" />
       <End Role="SubUser" EntitySet="SubUsers" />
@@ -1395,6 +1341,24 @@
       <End Role="Location" EntitySet="Locations" />
       <End Role="TransferOrder" EntitySet="TransferOrders" />
     </AssociationSet>
+    <EntitySet Name="DeliveryBoys" EntityType="db_a82b87_zsixrestaurantModel.DeliveryBoy" />
+    <EntitySet Name="DeliveryBoyBrandJuncs" EntityType="db_a82b87_zsixrestaurantModel.DeliveryBoyBrandJunc" />
+    <EntitySet Name="PushTokens" EntityType="db_a82b87_zsixrestaurantModel.PushToken" />
+    <EntitySet Name="Reservations" EntityType="db_a82b87_zsixrestaurantModel.Reservation" />
+    <AssociationSet Name="FK_DeliveryBoyBrandJunc_Brand" Association="db_a82b87_zsixrestaurantModel.FK_DeliveryBoyBrandJunc_Brand">
+      <End Role="Brand" EntitySet="Brands" />
+      <End Role="DeliveryBoyBrandJunc" EntitySet="DeliveryBoyBrandJuncs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryBoyBrandJunc_DeliveryBoy" Association="db_a82b87_zsixrestaurantModel.FK_DeliveryBoyBrandJunc_DeliveryBoy">
+      <End Role="DeliveryBoy" EntitySet="DeliveryBoys" />
+      <End Role="DeliveryBoyBrandJunc" EntitySet="DeliveryBoyBrandJuncs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PushToken_Locations" Association="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="PushToken" EntitySet="PushTokens" />
+    </AssociationSet>
+    <EntitySet Name="OrderCheckouts" EntityType="db_a82b87_zsixrestaurantModel.OrderCheckout" />
+    <EntitySet Name="CustomerOrders" EntityType="db_a82b87_zsixrestaurantModel.CustomerOrder" />
     <EntitySet Name="Orders" EntityType="db_a82b87_zsixrestaurantModel.Order" />
     <AssociationSet Name="FK_CustomerOrders_Orders" Association="db_a82b87_zsixrestaurantModel.FK_CustomerOrders_Orders">
       <End Role="Order" EntitySet="Orders" />
@@ -2081,10 +2045,10 @@
     <NavigationProperty Name="Brand" Relationship="db_a82b87_zsixrestaurantModel.FK_Locations_Brand" FromRole="Location" ToRole="Brand" />
     <NavigationProperty Name="Categories" Relationship="db_a82b87_zsixrestaurantModel.FK_Category_Locations" FromRole="Location" ToRole="Category" />
     <NavigationProperty Name="Customers" Relationship="db_a82b87_zsixrestaurantModel.FK_Customer_Locations" FromRole="Location" ToRole="Customer" />
-    <NavigationProperty Name="PushTokens" Relationship="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" FromRole="Location" ToRole="PushToken" />
     <NavigationProperty Name="SubUsers" Relationship="db_a82b87_zsixrestaurantModel.FK_SubUser_Locations" FromRole="Location" ToRole="SubUser" />
     <NavigationProperty Name="TransferOrders" Relationship="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations" FromRole="Location" ToRole="TransferOrder" />
     <NavigationProperty Name="TransferOrders1" Relationship="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations1" FromRole="Location" ToRole="TransferOrder" />
+    <NavigationProperty Name="PushTokens" Relationship="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" FromRole="Location" ToRole="PushToken" />
     <NavigationProperty Name="Orders" Relationship="db_a82b87_zsixrestaurantModel.FK_Orders_Locations" FromRole="Location" ToRole="Order" />
   </EntityType>
   <Association Name="FK_Locations_Brand">
@@ -2119,18 +2083,6 @@
         <PropertyRef Name="LocationID" />
       </Principal>
       <Dependent Role="Customer">
-        <PropertyRef Name="LocationID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PushToken_Locations">
-    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
-    <End Type="db_a82b87_zsixrestaurantModel.PushToken" Role="PushToken" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Location">
-        <PropertyRef Name="LocationID" />
-      </Principal>
-      <Dependent Role="PushToken">
         <PropertyRef Name="LocationID" />
       </Dependent>
     </ReferentialConstraint>
@@ -2171,6 +2123,144 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="DeliveryBoy">
+    <Key>
+      <PropertyRef Name="DeliveryBoyID" />
+    </Key>
+    <Property Name="DeliveryBoyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DBName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DBAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DBContactNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DBVehicleNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DBCNICNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="DBImage" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" />
+    <NavigationProperty Name="DeliveryBoyBrandJuncs" Relationship="db_a82b87_zsixrestaurantModel.FK_DeliveryBoyBrandJunc_DeliveryBoy" FromRole="DeliveryBoy" ToRole="DeliveryBoyBrandJunc" />
+  </EntityType>
+  <EntityType Name="DeliveryBoyBrandJunc">
+    <Key>
+      <PropertyRef Name="DBAJuncID" />
+    </Key>
+    <Property Name="DBAJuncID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeliveryBoyID" Type="Int32" />
+    <Property Name="BrandID" Type="Int32" />
+    <NavigationProperty Name="Brand" Relationship="db_a82b87_zsixrestaurantModel.FK_DeliveryBoyBrandJunc_Brand" FromRole="DeliveryBoyBrandJunc" ToRole="Brand" />
+    <NavigationProperty Name="DeliveryBoy" Relationship="db_a82b87_zsixrestaurantModel.FK_DeliveryBoyBrandJunc_DeliveryBoy" FromRole="DeliveryBoyBrandJunc" ToRole="DeliveryBoy" />
+  </EntityType>
+  <EntityType Name="PushToken">
+    <Key>
+      <PropertyRef Name="TokenID" />
+    </Key>
+    <Property Name="TokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="Device" Type="Int32" />
+    <NavigationProperty Name="Location" Relationship="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" FromRole="PushToken" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BrandID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="NumberPerson" Type="Int32" />
+    <Property Name="ReservationDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="SittingArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="ReservationStatus" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_DeliveryBoyBrandJunc_Brand">
+    <End Type="db_a82b87_zsixrestaurantModel.Brand" Role="Brand" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.DeliveryBoyBrandJunc" Role="DeliveryBoyBrandJunc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brand">
+        <PropertyRef Name="BrandID" />
+      </Principal>
+      <Dependent Role="DeliveryBoyBrandJunc">
+        <PropertyRef Name="BrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryBoyBrandJunc_DeliveryBoy">
+    <End Type="db_a82b87_zsixrestaurantModel.DeliveryBoy" Role="DeliveryBoy" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.DeliveryBoyBrandJunc" Role="DeliveryBoyBrandJunc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryBoy">
+        <PropertyRef Name="DeliveryBoyID" />
+      </Principal>
+      <Dependent Role="DeliveryBoyBrandJunc">
+        <PropertyRef Name="DeliveryBoyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PushToken_Locations">
+    <End Type="db_a82b87_zsixrestaurantModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="db_a82b87_zsixrestaurantModel.PushToken" Role="PushToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="PushToken">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OrderCheckout">
+    <Key>
+      <PropertyRef Name="OrderCheckoutID" />
+    </Key>
+    <Property Name="OrderCheckoutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="PaymentMode" Type="Int32" />
+    <Property Name="AmountPaid" Type="Double" />
+    <Property Name="AmountTotal" Type="Double" />
+    <Property Name="GrandTotal" Type="Double" />
+    <Property Name="ServiceCharges" Type="Double" />
+    <Property Name="Tax" Type="Double" />
+    <Property Name="CheckoutDate" Type="DateTime" Precision="3" />
+    <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="LastUpdateBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="DiscountAmount" Type="Double" />
+    <Property Name="DeliveryAreaID" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="db_a82b87_zsixrestaurantModel.FK_OrderCheckout_Orders" FromRole="OrderCheckout" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="CustomerOrder">
+    <Key>
+      <PropertyRef Name="CustomerOrderID" />
+    </Key>
+    <Property Name="CustomerOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="LastUpdatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="AddressType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressNickName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TableNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Order" Relationship="db_a82b87_zsixrestaurantModel.FK_CustomerOrders_Orders" FromRole="CustomerOrder" ToRole="Order" />
+  </EntityType>
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="OrderID" />

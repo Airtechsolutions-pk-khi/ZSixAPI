@@ -137,6 +137,12 @@
     <Compile Include="DBEntities\DeliveryAreaBrandJunc.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBEntities\DeliveryBoy.cs">
+      <DependentUpon>DBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\DeliveryBoyBrandJunc.cs">
+      <DependentUpon>DBEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBEntities\Item.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
@@ -165,6 +171,9 @@
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\PushToken.cs">
+      <DependentUpon>DBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBEntities\Reservation.cs">
       <DependentUpon>DBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="DBEntities\sp_authenticateUser_admin_Result.cs">

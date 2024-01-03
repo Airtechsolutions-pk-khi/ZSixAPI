@@ -17,7 +17,7 @@ namespace ZSixRestaurantAPI.Controllers
     {
         /// <summary>
         /// 
-        /// </summary>
+        /// </summary>  
         [HttpGet]
         [Route("api/push/android")]
         public void PushNotification()
@@ -27,8 +27,8 @@ namespace ZSixRestaurantAPI.Controllers
                 //var applicationID = "AAAArE69nn0:APA91bFqI80DpPrdb1s0lT8tf4xUfoigYvGVXQOlBAIq7tCB3224CjqOTyvxiP7L_eKN4uoRWsTVw0661yX4CooMBPgIsddZSMxpypJCKg6l5Q7xgHTGYDlqeVV-HTCn9ud94a5X5a2e";
                 //var senderId = "740055424637"; 
                 var applicationID = "AAAAbkNg6FE:APA91bGh1BZdl9AnsDfJfmCgbSEaKpEDzIEzw_jwN8zaeXIpOWGBJc77sXnYcNCoCA15zWkXgyX42gkzOw0sCh0wVDC5NYhwZPM9ZzFEd7Y5y12lzjMs2n15uBbmLzH39TocNXv9MqRQ";
-                var senderId = "1070252443311";
-                string deviceId = "fQ6krLJRTV6e97TmK-7Hks:APA91bHkUj_Vowc-5mr4epwABKf2EDLjrHhIv3wSP-uTbSWLsYy11j2cCgqwfPtQwuFAxopRo5EdqRp8XNHncPL_3g8NMkit9EcLUAbuYro2_yq09aGsAMXhS2knC5OG1O84buTZemSf";
+                var senderId = "473576826961";
+                string deviceId = "fh5W_w3JSViCXD0rGuUmzl:APA91bGJF1AUoUjQ2Ezk7FkJwfV63CgNoYKXVt8zyHFb__1sdmJBcMxeWI6j1nLTOTT66uDtccC0My8XlH1B48DZIRxbOakW-oWYhO4XCxSzi77M_Zt_5MMSKYUajdE2RaeLDKxIhNEh";
                 WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
                 tRequest.Method = "post";
                 tRequest.ContentType = "application/json";

@@ -141,7 +141,7 @@ namespace ZSixRestaurantAPI.Controllers
         /// <param name="orderid"></param>
         /// <param name="statusid"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("orders/admin/update/{orderid}/{statusid}")]
         public HttpResponseMessage GetOrderUpdateAdmin(int orderid,int statusid)
         {

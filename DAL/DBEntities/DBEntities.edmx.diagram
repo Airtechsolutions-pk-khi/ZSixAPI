@@ -15,18 +15,15 @@
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerAddress" Width="1.5" PointX="10.5" PointY="39.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerDetail" Width="1.5" PointX="10.5" PointY="43.625" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerOrderDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerOrder" Width="1.5" PointX="10.5" PointY="52.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerPayment" Width="1.5" PointX="10.5" PointY="47.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Delivery" Width="1.5" PointX="0.75" PointY="28.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.DeliveryAreaBrandJunc" Width="1.5" PointX="3" PointY="33.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Item" Width="1.5" PointX="7.5" PointY="36" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Modifier" Width="1.5" PointX="12.75" PointY="35.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Offer" Width="1.5" PointX="9.75" PointY="30.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderCheckout" Width="1.5" PointX="10.5" PointY="57" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderDetail" Width="1.5" PointX="13.5" PointY="44.875" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderDetailAddon" Width="1.5" PointX="15.75" PointY="40.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderDetailModifier" Width="1.5" PointX="18.75" PointY="40.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.PushToken" Width="1.5" PointX="5.25" PointY="53.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Status" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.SubUser" Width="1.5" PointX="5.25" PointY="37.625" IsExpanded="true" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.TodaySpecialItem" Width="1.5" PointX="9.75" PointY="62.125" IsExpanded="true" />
@@ -58,10 +55,18 @@
         <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Locations_Brand" />
         <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Category_Locations" />
         <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Customer_Locations" />
-        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" />
         <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_SubUser_Locations" />
         <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations" />
         <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_TransferOrder_Locations1" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.DeliveryBoy" Width="1.5" PointX="0.75" PointY="46.375" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.DeliveryBoyBrandJunc" Width="1.5" PointX="3" PointY="36.25" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.PushToken" Width="1.5" PointX="3" PointY="40.25" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Reservation" Width="1.5" PointX="3.375" PointY="4.75" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_DeliveryBoyBrandJunc_Brand" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_DeliveryBoyBrandJunc_DeliveryBoy" />
+        <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_PushToken_Locations" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.OrderCheckout" Width="1.5" PointX="17.75" PointY="33.375" />
+        <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.CustomerOrder" Width="1.5" PointX="17.75" PointY="28.375" />
         <EntityTypeShape EntityType="db_a82b87_zsixrestaurantModel.Order" Width="1.5" PointX="15.5" PointY="32.375" />
         <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_CustomerOrders_Orders" />
         <AssociationConnector Association="db_a82b87_zsixrestaurantModel.FK_Orders_Locations" />

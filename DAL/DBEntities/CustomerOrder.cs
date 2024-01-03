@@ -29,6 +29,7 @@ namespace DAL.DBEntities
         public Nullable<int> OrderID { get; set; }
         public string AddressType { get; set; }
         public string AddressNickName { get; set; }
+        public string TableNo { get; set; }
     
         public virtual Order Order { get; set; }
     }

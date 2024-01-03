@@ -181,8 +181,59 @@ namespace BAL.Repositories
         {
             try
             {
-                var applicationID = "AAAA-TAERq8:APA91bFCEO0DgmCF_B2ICXmphhO6Iil1W7bN1kjy3cOyCRPwncRiLEVNvCrUmBPwqP_7EhQrN4xcFbEZF8wrVj5GQlPK5HzkMFWzKuiNQ59eMeUVew0BJT8aqeAnshtjwWWepf9DxKA2";
+                var applicationID = "AAAAbkNg6FE:APA91bGh1BZdl9AnsDfJfmCgbSEaKpEDzIEzw_jwN8zaeXIpOWGBJc77sXnYcNCoCA15zWkXgyX42gkzOw0sCh0wVDC5NYhwZPM9ZzFEd7Y5y12lzjMs2n15uBbmLzH39TocNXv9MqRQ";
+                var senderId = "473576826961";
+                string deviceId = obj.DeviceID;
+                WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
+                tRequest.Method = "post";
+                tRequest.ContentType = "application/json";
+                var data = new
+                {
+                    to = deviceId,
+                    notification = new
+                    {
+                        body = obj.Message,
+                        title = obj.Title,
+                        icon = "myicon",
+                        sound = "default"
+                    }
+                };
+                var serializer = new JavaScriptSerializer();
+                var json = serializer.Serialize(data);
+                Byte[] byteArray = Encoding.UTF8.GetBytes(json);
+                tRequest.Headers.Add(string.Format("Authorization: key={0}", applicationID));
+                tRequest.Headers.Add(string.Format("Sender: id={0}", senderId));
+                tRequest.ContentLength = byteArray.Length;
+                using (Stream dataStream = tRequest.GetRequestStream())
+                {
+                    dataStream.Write(byteArray, 0, byteArray.Length);
+                    using (WebResponse tResponse = tRequest.GetResponse())
+                    {
+                        using (Stream dataStreamResponse = tResponse.GetResponseStream())
+                        {
+                            using (StreamReader tReader = new StreamReader(dataStreamResponse))
+                            {
+                                String sResponseFromServer = tReader.ReadToEnd();
+                                string str = sResponseFromServer;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string str = ex.Message;
+            }
+        }
+
+        public void PushNotificationAndroidCustomer(PushNoticationBLL obj)
+        {
+            try
+            {
+                var applicationID = "TAERq8:APA91bFCEO0DgmCF_B2ICXmphhO6Iil1W7bN1kjy3cOyCRPwncRiLEVNvCrUmBPwqP_7EhQrN4xcFbEZF8wrVj5GQlPK5HzkMFWzKuiNQ59eMeUVew0BJT8aqeAnshtjwWWepf9DxKA2";
+
                 var senderId = "1070252443311";
+
                 string deviceId = obj.DeviceID;
                 WebRequest tRequest = WebRequest.Create("https://fcm.googleapis.com/fcm/send");
                 tRequest.Method = "post";
